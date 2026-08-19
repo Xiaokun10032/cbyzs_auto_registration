@@ -2,7 +2,7 @@
 
 > **公共信息**
 > 
-> - **服务地址**：`gw.cbyzs.com`
+> - **服务地址**：`BASE_URL`
 >     
 > - **协议**：HTTPS（示例中使用 HTTP/2）
 >     
@@ -46,17 +46,17 @@
 - **Query 参数**：
     
 
-|参数名|类型|必填|说明|
-|---|---|---|---|
-|`clinicId`|string|✅|诊所ID（示例：`1641457759539081218`）|
-|`sdate`|string|✅|开始日期，格式 `YYYY-MM-DD`|
-|`edate`|string|✅|结束日期，格式 `YYYY-MM-DD`|
+| 参数名        | 类型     | 必填  | 说明                             |
+| ---------- | ------ | --- | ------------------------------ |
+| `clinicId` | string | ✅   | 诊所ID（示例：`1555481165165654777`） |
+| `sdate`    | string | ✅   | 开始日期，格式 `YYYY-MM-DD`           |
+| `edate`    | string | ✅   | 结束日期，格式 `YYYY-MM-DD`           |
 
 ### 请求示例
 
 ```http
-GET /cbyzs-scheduler/opsource/v1/getClinicSourceWeek?clinicId=1641457759539081218&sdate=2026-08-18&edate=2026-08-25 HTTP/2
-Host: gw.cbyzs.com
+GET /cbyzs-scheduler/opsource/v1/getClinicSourceWeek?clinicId=1555481165165654777&sdate=2026-08-18&edate=2026-08-25 HTTP/2
+Host: BASE_URL
 Authorization: <token>
 Cb-Client: cb-ihospital-wx
 ```
@@ -69,14 +69,14 @@ Cb-Client: cb-ihospital-wx
   "msg": "操作成功",
   "data": [
     {
-      "clinicId": "1641457759539081218",
+      "clinicId": "1555481165165654777",
       "date": "2026-08-18",
       "day": "18",
       "week": "周二",
       "hasSource": 0
     },
     {
-      "clinicId": "1641457759539081218",
+      "clinicId": "1555481165165654777",
       "date": "2026-08-19",
       "day": "19",
       "week": "周三",
@@ -121,8 +121,8 @@ Cb-Client: cb-ihospital-wx
 ### 请求示例
 
 ```http
-GET /cbyzs-scheduler/v1/appointRegister/getDocListByClinicIdV2?clinicId=1641457759539081218&current=1&size=100&searchDate= HTTP/2
-Host: gw.cbyzs.com
+GET /cbyzs-scheduler/v1/appointRegister/getDocListByClinicIdV2?clinicId=1555481165165654777&current=1&size=100&searchDate= HTTP/2
+Host: BASE_URL
 Authorization: <token>
 Cb-Client: cb-ihospital-wx
 ```
@@ -136,12 +136,12 @@ Cb-Client: cb-ihospital-wx
   "data": {
     "records": [
       {
-        "docId": "1641457760482799618",
-        "docName": "郭彦丽",
+        "docId": "1554884995626268888",
+        "docName": "张三",
         "title": "主治医师",
         "deptName": "全科门诊",
-        "clinicName": "南开河郭彦丽卫生室",
-        "clinicAddress": "河北省邯郸市磁县磁县磁州镇南开河村综治中心(泰山路南)",
+        "clinicName": "张三卫生室",
+        "clinicAddress": "山东潍坊",
         "registrationStatus": 1,
         "sourceDayList": [
           {
@@ -209,8 +209,8 @@ Cb-Client: cb-ihospital-wx
 ### 请求示例
 
 ```http
-GET /cbyzs-scheduler/opsource/v1/getDocNoonSource?date=2026-08-19&docId=1641457760482799618&type=2 HTTP/2
-Host: gw.cbyzs.com
+GET /cbyzs-scheduler/opsource/v1/getDocNoonSource?date=2026-08-19&docId=1554884995626268888&type=2 HTTP/2
+Host: BASE_URL
 Authorization: <token>
 Cb-Client: cb-ihospital-wx
 ```
@@ -223,20 +223,20 @@ Cb-Client: cb-ihospital-wx
   "msg": "操作成功",
   "data": [
     {
-      "sourceId": "2087333320952561670",
+      "sourceId": "1548444844946598977",
       "stratTime": "12:00",
       "endTime": "12:00",
       "total": 1,
       "regTimeMode": 1,
-      "sourceIds": ["2087333320952561670"]
+      "sourceIds": ["1548444844946598977"]
     },
     {
-      "sourceId": "2087333320952561671",
+      "sourceId": "1548444844946598978",
       "stratTime": "13:07",
       "endTime": "13:14",
       "total": 1,
       "regTimeMode": 1,
-      "sourceIds": ["2087333320952561671"]
+      "sourceIds": ["1548444844946598978"]
     }
     // ... 更多号源
   ],
@@ -275,8 +275,8 @@ Cb-Client: cb-ihospital-wx
 ### 请求示例
 
 ```http
-GET /cbyzs-mobile-doctor-backend/hospitalOrder/scheduleLockCheck?userId=2088462718583033858 HTTP/2
-Host: gw.cbyzs.com
+GET /cbyzs-mobile-doctor-backend/hospitalOrder/scheduleLockCheck?userId=2322487955599788777 HTTP/2
+Host: BASE_URL
 Authorization: <token>
 Cb-Client: cb-ihospital-wx
 ```
@@ -288,8 +288,8 @@ Cb-Client: cb-ihospital-wx
   "code": 0,
   "msg": "操作成功",
   "data": {
-    "sourceId": "2087333320948367378",
-    "doctorId": "1641457760482799618",
+    "sourceId": "1548444844946598977",
+    "doctorId": "1554884995626268888",
     "expireTime": "2026-08-18 22:22:57",
     "dayDate": "2026-08-19",
     "startTime": "09:50",
@@ -337,8 +337,8 @@ Cb-Client: cb-ihospital-wx
 
 ```json
 {
-  "userId": "2088462718583033858",
-  "sourceId": "2087333320948367378"
+  "userId": "2322487955599788777",
+  "sourceId": "1548444844946598977"
 }
 ```
 
@@ -349,8 +349,8 @@ Cb-Client: cb-ihospital-wx
   "code": 0,
   "msg": "操作成功",
   "data": {
-    "sourceId": "2087333320948367378",
-    "doctorId": "1641457760482799618",
+    "sourceId": "1548444844946598977",
+    "doctorId": "1554884995626268888",
     "expireTime": "2026-08-18 22:22:56",
     "dayDate": null,
     "startTime": null,
@@ -407,17 +407,17 @@ Cb-Client: cb-ihospital-wx
 
 ```json
 {
-  "userId": "2088462718583033858",
-  "patName": "王星星",
+  "userId": "2322487955599788777",
+  "patName": "李四",
   "patSex": "男",
-  "birthday": "2006-12-01",
-  "clinicId": "1641457759539081218",
-  "deptId": "4711879525904943060",
+  "birthday": "2000-11-11",
+  "clinicId": "1555481165165654777",
+  "deptId": "167614654168748488",
   "deptName": "全科门诊",
-  "docId": "1641457760482799618",
-  "docName": "郭彦丽",
-  "sourceId": "2087333320948367378",
-  "memberId": "2088600096131895298",
+  "docId": "1554884995626268888",
+  "docName": "张三",
+  "sourceId": "1548444844946598977",
+  "memberId": "5844998892628459955",
   "allergies": "暂无过敏史",
   "regFee": "0",
   "filelist": [],
@@ -433,12 +433,12 @@ Cb-Client: cb-ihospital-wx
   "code": 0,
   "msg": "操作成功",
   "data": {
-    "id": "2089719025803501569",
-    "orderNumber": "YY260818001884",
-    "employeeName": "郭彦丽",
+    "id": "4614684186468468777",
+    "orderNumber": "YY154484166965",
+    "employeeName": "张三",
     "orderStatus": "0501",
     "amount": 0,
-    "createTime": "2026-08-18 22:20:14"
+    "createTime": "2026-08-18 22:20:00"
   },
   "success": true
 }
@@ -446,9 +446,9 @@ Cb-Client: cb-ihospital-wx
 
 ### 响应关键字段说明
 
-|字段|说明|
-|---|---|
-|`data.id`|订单ID|
-|`data.orderNumber`|订单编号|
-|`data.orderStatus`|订单状态（"0501" 表示待就诊等）|
-|`data.amount`|支付金额（0表示免费）|
+| 字段                 | 说明   |
+| ------------------ | ---- |
+| `data.id`          | 订单ID |
+| `data.orderNumber` | 订单编号 |
+| `data.orderStatus` | 订单状态 |
+| `data.amount`      | 支付金额 |
